@@ -1,6 +1,7 @@
 package cs4330.cs.utep.edu;
 
 import android.os.Parcelable;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -19,11 +20,16 @@ public class Item implements Serializable,Comparable<Item> {
 
     public Item(String name){
         url = name;
-        pf = new PriceFinder(this);
     }
 
-    protected double getPrice(){
-        return 0.0;
+    protected void getPrice(){
+        Log.d("Andrew","Made it to getPrice");
+        pf.execute();
+        this.currentPrice = pf.item.currentPrice;
+        Log.d("Andrew","Current price: " + this.currentPrice + " " + pf.item.currentPrice);
+    }
+    void setPrice(Double newPrice){
+        this.currentPrice = newPrice;
     }
 
 //    public void calculatePercent() {

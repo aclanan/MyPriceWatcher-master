@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     ListView listView;
     theArrayAdapter itemList;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     int currentItemPosition;
     int addCode = 1;
     int editCode = 2;
-
+    PriceFinder pf;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -139,8 +139,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.refresh:
-                itemList.itemList.get(currentItemPosition).pf.getPrice();
-                itemList.itemList.get(currentItemPosition).getPrice();
+                new PriceFinder(itemList.itemList.get(currentItemPosition), itemList).execute();
+//                itemList.itemList.get(currentItemPosition).getPrice();
                 itemList.notifyDataSetChanged();
                 return true;
             case R.id.editItem:
@@ -155,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(menuItem);
         }
+
     }
 
     void handleSendText(Intent intent) {
