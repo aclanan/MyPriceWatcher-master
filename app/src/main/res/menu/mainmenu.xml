@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/refresh"
+        android:title="Refresh"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/addItem"
+        android:title="Add new item"
+        android:onClick="onClickAddItem"
+        />
+    <item
+        android:id="@+id/sortBy"
+        android:title="Sort By Price (Low - High)"
+        android:onClick="onClickSortBy" />
+    <item
+        android:id = "@+id/filter"
+        android:title = "Filter by Nike"
+        android:onClick = "onClickFilterBy"/>
+
+</menu>

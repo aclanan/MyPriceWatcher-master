@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditItem">
+
+    <TextView
+        android:id="@+id/itemNameLabel"
+        android:layout_width="200dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="105dp"
+        android:text="@string/item_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/itemURLLabel"
+        android:layout_width="200dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="105dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemName" />
+
+    <EditText
+        android:id="@+id/itemName"
+        android:layout_width="200dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="105dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Item Name"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemNameLabel" />
+
+    <EditText
+        android:id="@+id/itemURL"
+        android:layout_width="206dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="105dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter URL "
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemURLLabel" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemURL" />
+
+</android.support.constraint.ConstraintLayout>

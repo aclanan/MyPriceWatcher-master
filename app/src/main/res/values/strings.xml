@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyPriceWatcher</string>
+    <string name="item_name">Item Name:</string>
+    <string name="initial_price">Initial Price:</string>
+    <string name="url">Item URL:</string>
+    <string name="current_price">Current Price:</string>
+    <string name="percent_change">Percent Change:</string>
+    <string name="calculate">Calculate</string>
+    <string name="submit">Submit</string>
+</resources>
