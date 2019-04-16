@@ -8,7 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-
+//Needs Work //
 public class PriceFinder extends AsyncTask<Void,Void,Void> {
     protected Item item;
 
@@ -23,6 +23,7 @@ public class PriceFinder extends AsyncTask<Void,Void,Void> {
             Document itemDoc = Jsoup.connect(item.url).get();
             Elements price = itemDoc.select(".price");
             Log.d("Andrew",price.get(0).text());
+
         }catch(IOException e ) {
             Log.d("Andrew","Download Failed :( ");
             e.printStackTrace();
