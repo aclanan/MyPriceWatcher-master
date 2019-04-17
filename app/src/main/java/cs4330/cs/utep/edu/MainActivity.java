@@ -1,10 +1,12 @@
 package cs4330.cs.utep.edu;
 
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.*;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +33,11 @@ public class MainActivity extends AppCompatActivity  {
     int addCode = 1;
     int editCode = 2;
     PriceFinder pf;
+
+    private ProgressBar progressBar;
+    int progress = 0;
+    Handler handler = new Handler();
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -45,6 +52,7 @@ public class MainActivity extends AppCompatActivity  {
                 onClickAddItem(menuItem);
                 return true;
             case R.id.refresh:
+                runProgressBar();
                 for(Item i: itemList.itemList){
                     new PriceFinder(i,itemList).execute();
                 }
@@ -189,12 +197,43 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
+    private void runProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+        new Thread(new Runnable() {
+            public void run() {
+                while (progress < 100) {
+                    progress = getProgress();
+                    handler.post(new Runnable() {
+                        public void run() {
+                            progressBar.setProgress(progress);
+                        }
+                    });
+                }
+                handler.post(new Runnable() {
+                    public void run() {
+                        progressBar.setVisibility(View.GONE);
+                    }
+                });
+            }
+            private int getProgress() {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return ++progress;
+            }
+        }).start();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Toolbar toolbar = findViewById(R.id.toolbar);
+         progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
 
         checkNetworkConnection();
 
@@ -219,6 +258,8 @@ public class MainActivity extends AppCompatActivity  {
                 popup.show();
             }
         });
+
+
 
 
     }
