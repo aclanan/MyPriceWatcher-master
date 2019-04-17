@@ -32,15 +32,12 @@ public class PriceFinder extends AsyncTask<Void,Void,String> {
                 Log.d("Andrew","Zumiez: " + item.currentPrice);
                 return price.get(0).text().substring(1,price.get(0).text().length());
             }
-            if(item.url.contains("vans")){
+            if(item.url.contains("hm")){
                 Document itemDoc = Jsoup.connect(item.url).get();
-                Elements price = itemDoc.select(".product-content-info-offer-price offer-price offer-price-js product-price-amount-js");
-                Log.d("Andrew","Vans: " + price.get(0).text());
-            }
-            if(item.url.contains("converse")){
-                Document itemDoc = Jsoup.connect(item.url).userAgent(USER_AGENT).get();
-                Elements price = itemDoc.select(".product-price--sales");
-                Log.d("Andrew","Converse: " + price.get(0).text());
+                Elements price = itemDoc.select(".price-value");
+                this.item.currentPrice = Double.parseDouble(price.get(0).text().substring(1,price.get(0).text().length()));
+                Log.d("Andrew","H&M: " + price.get(0).text());
+                return price.get(0).text().substring(1,price.get(0).text().length());
             }
 
 
@@ -48,7 +45,6 @@ public class PriceFinder extends AsyncTask<Void,Void,String> {
             Log.d("Andrew","Download Failed ");
             e.printStackTrace();
         }
-        Log.d("Andrew","Success");
         return null;
     }
 

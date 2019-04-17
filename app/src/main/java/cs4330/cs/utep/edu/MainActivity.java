@@ -46,8 +46,7 @@ public class MainActivity extends AppCompatActivity  {
                 return true;
             case R.id.refresh:
                 for(Item i: itemList.itemList){
-                    i.getPrice();
-//                    i.calculatePercent();
+                    new PriceFinder(i,itemList).execute();
                 }
                 itemList.notifyDataSetChanged();
                 return true;
@@ -140,7 +139,6 @@ public class MainActivity extends AppCompatActivity  {
         switch (menuItem.getItemId()) {
             case R.id.refresh:
                 new PriceFinder(itemList.itemList.get(currentItemPosition), itemList).execute();
-//                itemList.itemList.get(currentItemPosition).getPrice();
                 itemList.notifyDataSetChanged();
                 return true;
             case R.id.editItem:

@@ -19,9 +19,8 @@ public class theArrayAdapter extends ArrayAdapter<Item> {
         super(context, -1, itemList);
         this.context = context;
         this.itemList = itemList;
-//        temp.url = "https://www.converse.com/shop/p/chuck-taylor-all-star-low-top-unisex-shoe/M7652.html?dwvar_M7652_color=optical%20white&styleNo=M7652&cgid=classic-chuck-shoes";
         temp.url = "https://www.zumiez.com/ripndip-daisy-do-gold-hoodie.html";
-        t.url = "https://www.vans.com/shop/mens-shoes/old-skool-zinnia-true-white#hero=0";
+        t.url = "https://www2.hm.com/en_us/productpage.0761140001.html/";
         itemList.add(temp);
         itemList.add(t);
     }

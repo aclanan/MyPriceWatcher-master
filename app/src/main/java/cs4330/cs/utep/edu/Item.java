@@ -21,17 +21,6 @@ public class Item implements Serializable,Comparable<Item> {
     public Item(String name){
         url = name;
     }
-
-    protected void getPrice(){
-        Log.d("Andrew","Made it to getPrice");
-        pf.execute();
-        this.currentPrice = pf.item.currentPrice;
-        Log.d("Andrew","Current price: " + this.currentPrice + " " + pf.item.currentPrice);
-    }
-    void setPrice(Double newPrice){
-        this.currentPrice = newPrice;
-    }
-
 //    public void calculatePercent() {
 //        DecimalFormat df = new DecimalFormat("#.##");
 //        double temp = ((currentPrice-initialPrice)/currentPrice * 100);
