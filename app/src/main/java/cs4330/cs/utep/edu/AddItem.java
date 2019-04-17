@@ -1,6 +1,7 @@
 package cs4330.cs.utep.edu;
 
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,16 +29,20 @@ public class AddItem extends AppCompatActivity {
         }
 
         addItemButton.setOnClickListener(view -> {
-            Item item = new Item(addItemURL.getText().toString());
-            item.itemName = addItemName.getText().toString();
-//            item.currentPrice = pf.priceFinder(item.itemName);
-//            item.initialPrice = pf.priceFinder(item.itemName);
-//            item.calculatePercent();
+            if(addItemURL.toString().contains("hm") ||addItemURL.toString().contains("zumiez")){
+                Item item = new Item(addItemURL.getText().toString());
+                item.itemName = addItemName.getText().toString();
+                Intent data = new Intent();
+                data.putExtra("newItem", item);
+                setResult(RESULT_OK, data);
+                finish();
+            }
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage("Invalid Url");
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
 
-            Intent data = new Intent();
-            data.putExtra("newItem", item);
-            setResult(RESULT_OK, data);
-            finish();
+
         });
     }
 

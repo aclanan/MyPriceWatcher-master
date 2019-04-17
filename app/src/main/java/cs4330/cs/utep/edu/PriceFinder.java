@@ -1,6 +1,7 @@
 package cs4330.cs.utep.edu;
 
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import org.jsoup.Jsoup;
@@ -38,6 +39,8 @@ public class PriceFinder extends AsyncTask<Void,Void,String> {
                 this.item.currentPrice = Double.parseDouble(price.get(0).text().substring(1,price.get(0).text().length()));
                 Log.d("Andrew","H&M: " + price.get(0).text());
                 return price.get(0).text().substring(1,price.get(0).text().length());
+            }else{
+                return "";
             }
 
 
@@ -50,6 +53,7 @@ public class PriceFinder extends AsyncTask<Void,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
+        ///Error handling//
         item.currentPrice = Double.parseDouble(result);
         listAdapter.notifyDataSetChanged();
     }

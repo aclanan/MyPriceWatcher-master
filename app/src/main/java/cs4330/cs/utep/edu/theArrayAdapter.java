@@ -13,8 +13,8 @@ public class theArrayAdapter extends ArrayAdapter<Item> {
     private final Context context;
     protected ArrayList<Item> itemList;
     protected ArrayList<Item> filterList;
-    Item temp = new Item("Converse");
-    Item t = new Item("Vans");
+    Item temp = new Item("Zumiez");
+    Item t = new Item("H&M");
     public theArrayAdapter(Context context, ArrayList<Item> itemList) {
         super(context, -1, itemList);
         this.context = context;
